@@ -515,8 +515,8 @@ class MSCOCO256Features(DatasetFactory):  # the moments calculated by Stable Dif
         self.prompts, self.contexts = [], []
         for f in sorted(os.listdir(os.path.join(path, 'run_vis')), key=lambda x: int(x.split('.')[0])):
             prompt, context = np.load(os.path.join(path, 'run_vis', f), allow_pickle=True)
-            self.prompts.append(prompt)
-            self.contexts.append(context)
+            self.prompts.append(prompt) # 文本
+            self.contexts.append(context) # 对应的clip embedding, B,S,D
         self.contexts = np.array(self.contexts)
 
     @property
